@@ -3,119 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Profesional - Scolastika Luiza</title>
+    <title>Scolastika Luiza | Tech Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
-            --base-color: #335872;
-            --primary-color: #7AAACE;
-            --secondary-color: #9CD5FF;
-            --accent-color: #F7F8F0;
+            --bg-dark: #010a13;
+            --sui-blue: #4ca2ff;
+            --sui-cyan: #33e1cf;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-muted: #94a3b8;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            color: var(--base-color);
-            scroll-behavior: smooth;
-            background-color: var(--base-color); /* Warna dasar jika partikel belum muat */
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: white;
+            overflow-x: hidden;
         }
 
-        /* Particles Background - FIXED untuk seluruh halaman */
+        /* Particles & Grid Background */
         #particles-js {
             position: fixed;
             width: 100%;
             height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1; /* Di belakang konten */
-            background: linear-gradient(180deg, var(--base-color) 0%, var(--primary-color) 100%);
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(76, 162, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(76, 162, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
         }
 
-        /* Navbar */
+        /* Glass Navbar */
         .navbar {
-            background-color: rgba(51, 88, 114, 0.95) !important;
-            backdrop-filter: blur(10px);
+            background: rgba(1, 10, 19, 0.8) !important;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 20px 0;
         }
-        .navbar-brand, .nav-link {
-            color: var(--accent-color) !important;
-        }
-        .nav-link:hover {
-            color: var(--secondary-color) !important;
-        }
+        .navbar-brand { font-weight: 800; letter-spacing: 1px; color: var(--sui-blue) !important; }
 
         /* Hero Section */
         #home {
-            padding: 120px 0 80px;
-            color: white;
-            background: transparent !important;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
         }
 
-        .profile-img {
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border: 8px solid var(--secondary-color);
-            border-radius: 50%;
+        .hero-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--sui-blue);
+            filter: blur(120px);
+            opacity: 0.2;
+            z-index: -1;
         }
 
-        /* Section Styling */
-        section {
-            padding: 80px 0;
-            background: transparent !important; /* Agar partikel terlihat */
-        }
-        
-        .section-title {
-            font-weight: 700;
-            margin-bottom: 40px;
-            color: white; /* Diubah ke putih agar kontras dengan background gelap */
-            border-bottom: 3px solid var(--secondary-color);
+        .profile-frame {
+            position: relative;
             display: inline-block;
         }
-
-        /* Card Styling dengan transparansi (Glassmorphism) */
-        .card {
-            border: none;
-            background-color: rgba(255, 255, 255, 0.9); 
-            backdrop-filter: blur(5px);
-            transition: transform 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .card:hover {
-            transform: translateY(-10px);
-            background-color: rgba(255, 255, 255, 1);
-        }
-        
-        .card-img-top {
-            height: 250px; 
-            object-fit: cover; 
+        .profile-img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            border: 2px solid var(--sui-blue);
+            animation: morph 8s ease-in-out infinite;
         }
 
-        .icon-box {
-            font-size: 2.5rem;
-            color: var(--base-color);
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
         }
 
-        /* Footer & Contact */
-        footer {
-            background-color: rgba(51, 88, 114, 0.8);
+        /* Typography */
+        .text-gradient {
+            background: linear-gradient(to right, #fff, var(--sui-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Cards & Components */
+        .sui-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
             backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .sui-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--sui-blue);
+            box-shadow: 0 10px 30px rgba(76, 162, 255, 0.1);
+        }
+
+        .btn-sui {
+            background: linear-gradient(90deg, var(--sui-blue), var(--sui-cyan));
             color: white;
-            padding: 50px 0 20px;
+            border: none;
+            border-radius: 100px;
+            padding: 12px 35px;
+            font-weight: 600;
+            transition: 0.3s;
         }
-        .contact-link {
-            color: var(--secondary-color);
-            text-decoration: none;
+        .btn-sui:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(76, 162, 255, 0.4);
+            color: white;
         }
-        .contact-link:hover {
-            text-decoration: underline;
+
+        .section-title {
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
         }
-        
-        /* Mengatur teks About Me agar lebih mudah dibaca di background gelap */
-        #about p {
-            color: #f8f9fa !important;
+
+        .portfolio-img {
+            border-radius: 15px;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            border-top: 1px solid var(--glass-border);
+            padding: 80px 0 30px;
         }
     </style>
 </head>
@@ -123,112 +144,110 @@
 
     <div id="particles-js"></div>
 
-    <nav class="navbar navbar-expand-lg sticky-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">LUIZA'S WEBSITE.</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <a class="navbar-brand" href="#">LUIZA.</a>
+            <button class="navbar-toggler btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                <ul class="navbar-nav ms-auto text-uppercase small fw-bold">
+                    <li class="nav-item"><a class="nav-link px-3" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="text-center">
+    <section id="home">
         <div class="container">
-            <img src="https://raw.githubusercontent.com/luizabere/asset2/main/WhatsApp%20Image%202026-03-03%20at%2008.32.34.jpeg" 
-                 alt="Scolastika Luiza" class="profile-img mb-4">
-            <h1 class="fw-bold">Halo, saya Scolastika Luiza Abuk Iru Bere</h1>
-            <p class="lead">Mahasiswi Teknik Informatika yang berfokus pada pengembangan teknologi pendidikan berbasis AI.</p>
-        </div>
-    </section>
-
-    <section id="about">
-        <div class="container text-center">
-            <h2 class="section-title">About Me</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <p class="lead" style="text-align: justify;">
-                        Saya adalah mahasiswi Informatika di Universitas Ma Chung yang memiliki minat besar dalam integrasi teknologi untuk solusi sosial dan pendidikan. Dengan pengalaman organisasi yang luas termasuk peran strategis sebagai Sekretaris BPM FTD dan Wakil Ketua OSIS saya telah mengasah kemampuan manajemen proyek, komunikasi publik, dan penyelesaian masalah secara efektif.
-                    </p>
-                    <p class="lead" style="text-align: justify;">
-                        Saya percaya bahwa teknologi seperti kecerdasan buatan (AI) memiliki potensi besar untuk menciptakan perubahan positif. Melalui latar belakang teknis yang saya miliki dan dedikasi dalam pengabdian masyarakat (seperti proyek pencegahan anemia di Desa Sumbersekar), saya berkomitmen untuk terus belajar dan berkontribusi dalam membangun sistem informasi yang adaptif dan bermanfaat bagi masyarakat luas.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services">
-        <div class="container text-center">
-            <h2 class="section-title">Services</h2>
-            <div class="row g-4 mt-2">
-                <div class="col-md-4">
-                    <div class="card h-100 p-4">
-                        <div class="icon-box mb-3"><i class="bi bi-laptop"></i></div>
-                        <h4>Pengembangan IT & Jaringan</h4>
-                        <p class="text-muted">Membangun solusi perangkat lunak dan mengelola infrastruktur jaringan yang efisien.</p>
+            <div class="row align-items-center">
+                <div class="col-lg-7" data-aos="fade-right">
+                    <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3">Informatics Engineering Student</span>
+                    <h1 class="display-3 fw-extrabold mb-4">Membangun Masa Depan <span class="text-gradient">AI Education.</span></h1>
+                    <p class="lead text-muted mb-5" style="max-width: 600px;">Saya Scolastika Luiza, fokus pada integrasi teknologi cerdas untuk solusi sosial dan infrastruktur digital yang adaptif.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#portfolio" class="btn btn-sui">Lihat Proyek</a>
+                        <a href="#contact" class="btn btn-outline-light rounded-pill px-4">Diskusi</a>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card h-100 p-4">
-                        <div class="icon-box mb-3"><i class="bi bi-diagram-3"></i></div>
-                        <h4>Manajemen Organisasi & Strategis</h4>
-                        <p class="text-muted">Mengelola struktur organisasi dan merencanakan langkah strategis untuk tujuan jangka panjang.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 p-4">
-                        <div class="icon-box mb-3"><i class="bi bi-people"></i></div>
-                        <h4>Komunikasi & Kepemimpinan Tim</h4>
-                        <p class="text-muted">Memimpin kolaborasi tim dengan komunikasi efektif untuk hasil yang maksimal.</p>
+                <div class="col-lg-5 text-center mt-5 mt-lg-0" data-aos="zoom-in">
+                    <div class="profile-frame">
+                        <div class="hero-glow"></div>
+                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/WhatsApp%20Image%202026-03-03%20at%2008.32.34.jpeg" alt="Scolastika Luiza" class="profile-img">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="portfolio">
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <h2 class="section-title">About <span class="text-gradient">Me</span></h2>
+                    <p class="text-muted mb-4">Mahasiswi Universitas Ma Chung dengan dedikasi tinggi pada manajemen proyek dan teknologi informasi. Berpengalaman dalam memimpin organisasi fakultas dan berkontribusi nyata dalam pengabdian masyarakat.</p>
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="sui-card p-3">
+                                <h3 class="h2 fw-bold text-primary mb-0">3.38</h3>
+                                <small class="text-muted">IPK Kumulatif</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="sui-card p-3">
+                                <h3 class="h2 fw-bold text-primary mb-0">3+</h3>
+                                <small class="text-muted">Tahun Organisasi</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="sui-card">
+                        <h4 class="mb-4">Core Focus</h4>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="p-2 bg-primary bg-opacity-10 rounded-3 me-3 text-primary"><i class="bi bi-cpu"></i></div>
+                            <div>Educational AI Technology</div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="p-2 bg-primary bg-opacity-10 rounded-3 me-3 text-primary"><i class="bi bi-diagram-3"></i></div>
+                            <div>Network Infrastructure</div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="p-2 bg-primary bg-opacity-10 rounded-3 me-3 text-primary"><i class="bi bi-mic"></i></div>
+                            <div>Public Speaking & Leadership</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-5">
         <div class="container text-center">
-            <h2 class="section-title">Portfolio</h2>
+            <h2 class="section-title" data-aos="fade-up">Selected <span class="text-gradient">Projects</span></h2>
             <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm">
-                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/Datacom%20V1.0-Course-312410018-ScolastikaLuizaAbukIruBere.png" 
-                             class="card-img-top" alt="Sertifikasi Networking">
-                        <div class="card-body">
-                            <h5 class="card-title">Sertifikasi Networking</h5>
-                            <p class="card-text small text-muted">Kompetensi dalam protokol routing, switching, dan keamanan jaringan berbasis Huawei HCIA-Datacom.</p>
-                        </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="sui-card text-start h-100">
+                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/Datacom%20V1.0-Course-312410018-ScolastikaLuizaAbukIruBere.png" class="portfolio-img w-100" alt="Networking">
+                        <h5>Huawei HCIA-Datacom</h5>
+                        <p class="small text-muted">Sertifikasi kompetensi jaringan, protokol routing, dan keamanan infrastruktur IT.</p>
                     </div>
                 </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm">
-                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/mcf.jpeg" 
-                             class="card-img-top" alt="Ma Chung Festival">
-                        <div class="card-body">
-                            <h5 class="card-title">Kerjasama Tim</h5>
-                            <p class="card-text small text-muted">Pengalaman kepanitiaan strategis sebagai Sekretaris dan Koordinator Humas dalam event berskala universitas.</p>
-                        </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="sui-card text-start h-100">
+                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/mcf.jpeg" class="portfolio-img w-100" alt="Management">
+                        <h5>Ma Chung Festival</h5>
+                        <p class="small text-muted">Kepemimpinan strategis sebagai Sekretaris & Koordinator Humas event universitas.</p>
                     </div>
                 </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm">
-                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/mc.jpeg" 
-                             class="card-img-top" alt="Professional MC">
-                        <div class="card-body">
-                            <h5 class="card-title">MC Profesional</h5>
-                            <p class="card-text small text-muted">Berpengalaman memandu berbagai acara formal dan non-formal dengan kemampuan komunikasi publik yang persuasif dan adaptif.</p>
-                        </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="sui-card text-start h-100">
+                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/mc.jpeg" class="portfolio-img w-100" alt="Public Speaking">
+                        <h5>Professional MC</h5>
+                        <p class="small text-muted">Komunikasi publik adaptif untuk berbagai skala acara formal dan non-formal.</p>
                     </div>
                 </div>
             </div>
@@ -237,54 +256,58 @@
 
     <footer id="contact">
         <div class="container">
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <h2 class="fw-bold mb-4">Mari Berdiskusi!</h2>
-                    <p><i class="bi bi-envelope-fill me-2"></i> <a href="mailto:luizabere16@gmail.com" class="contact-link">luizabere16@gmail.com</a></p>
-                    <p><i class="bi bi-whatsapp me-2"></i> 081328560870</p>
-                    <p><i class="bi bi-geo-alt-fill me-2"></i> Jl. Villa Puncak Tidar No. N 34, Malang</p>
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">Mari Berkolaborasi.</h2>
+                    <p class="text-muted mb-5">Siap membantu proyek Anda dengan sentuhan teknologi dan manajemen profesional.</p>
+                    <div class="d-flex gap-3 mb-4">
+                        <a href="mailto:luizabere16@gmail.com" class="btn btn-sui">Kirim Email</a>
+                        <a href="https://wa.me/6281328560870" class="btn btn-outline-light rounded-pill">WhatsApp</a>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <h5 class="fw-bold mb-3">Tautan Lainnya</h5>
-                    <ul class="list-unstyled">
-                        <li><i class="bi bi-building me-2"></i> <a href="https://machung.ac.id/" target="_blank" class="contact-link">Universitas Ma Chung</a></li>
-                        <li><i class="bi bi-person-workspace me-2"></i> <a href="https://lockey-irawan.github.io/" target="_blank" class="contact-link">Project Manager</a></li>
-                        <li><i class="bi bi-instagram me-2"></i> <a href="https://www.instagram.com/scolastikacc" target="_blank" class="contact-link">Instagram (@scolastikacc)</a></li>
-                        <li><i class="bi bi-linkedin me-2"></i> <a href="https://www.linkedin.com/in/scolastika-luiza-abuk-iru-bere-b8729233b" target="_blank" class="contact-link">LinkedIn Profil</a></li>
-                    </ul>
+                <div class="col-lg-6">
+                    <div class="row g-4">
+                        <div class="col-sm-6">
+                            <h6 class="fw-bold text-primary">Location</h6>
+                            <p class="small text-muted">Malang, Indonesia</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <h6 class="fw-bold text-primary">Socials</h6>
+                            <div class="d-flex gap-3">
+                                <a href="https://www.linkedin.com/in/scolastika-luiza-abuk-iru-bere-b8729233b" class="text-white h5"><i class="bi bi-linkedin"></i></a>
+                                <a href="https://www.instagram.com/scolastikacc" class="text-white h5"><i class="bi bi-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <hr class="mt-5">
-            <div class="text-center pb-3">
-                <small>&copy; 2026 Scolastika Luiza Abuk Iru Bere. Seluruh Hak Cipta Dilindungi.</small>
+            <div class="text-center mt-5 pt-5 opacity-50 small">
+                &copy; 2026 Scolastika Luiza Abuk Iru Bere. Built with precision.
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
+        AOS.init({ duration: 1000, once: true });
+
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 120, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#ffffff" },
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#4ca2ff" },
                 "shape": { "type": "circle" },
-                "opacity": { "value": 0.4, "random": false },
-                "size": { "value": 3, "random": true },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#ffffff",
-                    "opacity": 0.3,
-                    "width": 1
-                },
-                "move": { "enable": true, "speed": 1.5, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+                "opacity": { "value": 0.2, "random": false },
+                "size": { "value": 2, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#4ca2ff", "opacity": 0.1, "width": 1 },
+                "move": { "enable": true, "speed": 1, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
             },
             "interactivity": {
                 "detect_on": "canvas",
-                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } },
-                "modes": { "grab": { "distance": 200, "line_linked": { "opacity": 0.8 } } }
+                "events": { "onhover": { "enable": true, "mode": "grab" } },
+                "modes": { "grab": { "distance": 200, "line_linked": { "opacity": 0.5 } } }
             },
             "retina_detect": true
         });
