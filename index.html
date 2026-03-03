@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scolastika Luiza | Tech & Organization Profile</title>
+    <title>Scolastika Luiza | Professional Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
@@ -17,6 +17,7 @@
             --glass: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.1);
             --text-muted: #94a3b8;
+            --active-purple: #a855f7; /* Warna ungu seperti di contoh gambar Anda */
         }
 
         body {
@@ -39,14 +40,35 @@
             background-size: 50px 50px;
         }
 
-        /* Glass Navbar */
+        /* Glass Navbar Modern */
         .navbar {
-            background: rgba(1, 10, 19, 0.8) !important;
-            backdrop-filter: blur(15px);
+            background: rgba(1, 10, 19, 0.85) !important;
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--glass-border);
-            padding: 20px 0;
+            padding: 15px 0;
+            transition: 0.4s;
         }
-        .navbar-brand { font-weight: 800; letter-spacing: 1px; color: var(--sui-blue) !important; }
+
+        .nav-link {
+            color: white !important;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            padding: 10px 15px !important;
+            transition: 0.3s;
+            opacity: 0.8;
+        }
+
+        .nav-link:hover {
+            color: var(--sui-blue) !important;
+            opacity: 1;
+        }
+
+        /* Style Active Link ala contoh gambar Anda */
+        .nav-link.active {
+            color: var(--active-purple) !important;
+            font-weight: 700;
+            opacity: 1;
+        }
 
         /* Hero Section */
         #home {
@@ -87,7 +109,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Cards & Structure Styling */
+        /* Cards & Components */
         .sui-card {
             background: var(--glass);
             border: 1px solid var(--glass-border);
@@ -96,6 +118,7 @@
             padding: 30px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+
         .sui-card:hover {
             transform: translateY(-5px);
             border-color: var(--sui-blue);
@@ -103,54 +126,41 @@
         }
 
         .struct-icon {
-            font-size: 2rem;
+            font-size: 2.2rem;
             background: linear-gradient(90deg, var(--sui-blue), var(--sui-cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-            display: inline-block;
+            margin-bottom: 12px;
         }
 
-        .nav-pill-custom {
-            transition: 0.3s;
-            cursor: pointer;
-            text-align: center;
-        }
-        .nav-pill-custom:hover {
-            background: rgba(76, 162, 255, 0.1);
-        }
+        .section-title { font-weight: 800; font-size: 2.5rem; margin-bottom: 50px; }
 
         .btn-sui {
             background: linear-gradient(90deg, var(--sui-blue), var(--sui-cyan));
             color: white; border: none; border-radius: 100px;
             padding: 12px 35px; font-weight: 600; transition: 0.3s;
         }
-        .btn-sui:hover {
-            transform: scale(1.05); box-shadow: 0 0 20px rgba(76, 162, 255, 0.4); color: white;
-        }
-
-        .section-title { font-weight: 800; font-size: 2.5rem; margin-bottom: 50px; }
 
         footer { border-top: 1px solid var(--glass-border); padding: 80px 0 30px; }
     </style>
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target="#navbarNav">
 
     <div id="particles-js"></div>
 
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">LUIZA.</a>
-            <button class="navbar-toggler btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <i class="bi bi-list"></i>
+            <a class="navbar-brand fw-bold" href="#">LUIZA.</a>
+            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-grid-3x3-gap-fill"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto text-uppercase small fw-bold">
-                    <li class="nav-item"><a class="nav-link px-3" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#structure">Structure</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#portfolio">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#contact">Contact</a></li>
+                <ul class="navbar-nav ms-auto fw-semibold">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#structure">Structure</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -160,19 +170,39 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7" data-aos="fade-right">
-                    <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3">Informatics Engineering Student</span>
-                    <h1 class="display-3 fw-extrabold mb-4">Membangun Masa Depan <span class="text-gradient">AI Education.</span></h1>
-                    <p class="lead text-muted mb-5">Saya Scolastika Luiza, fokus pada pengembangan teknologi cerdas untuk solusi sosial dan infrastruktur digital yang adaptif.</p>
+                    <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3">Ma Chung Informatics Student</span>
+                    <h1 class="display-3 fw-extrabold mb-4">Crafting the Future of <span class="text-gradient">AI Education.</span></h1>
+                    <p class="lead text-muted mb-5">Saya Scolastika Luiza, berfokus pada integrasi AI untuk solusi sosial dan infrastruktur jaringan yang adaptif.</p>
                     <div class="d-flex gap-3">
-                        <a href="#structure" class="btn btn-sui">Lihat Struktur</a>
-                        <a href="#contact" class="btn btn-outline-light rounded-pill px-4">Diskusi</a>
+                        <a href="#structure" class="btn btn-sui">Explore Structure</a>
+                        <a href="#contact" class="btn btn-outline-light rounded-pill px-4">Contact Me</a>
                     </div>
                 </div>
                 <div class="col-lg-5 text-center mt-5 mt-lg-0" data-aos="zoom-in">
                     <div class="position-relative d-inline-block">
                         <div class="hero-glow"></div>
-                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/WhatsApp%20Image%202026-03-03%20at%2008.32.34.jpeg" alt="Scolastika Luiza" class="profile-img">
+                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/WhatsApp%20Image%202026-03-03%20at%2008.32.34.jpeg" alt="Scolastika Luiza" class="profile-img shadow-lg">
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <h2 class="section-title">About <span class="text-gradient">Me</span></h2>
+                    <p class="text-muted">Mahasiswi Teknik Informatika di Universitas Ma Chung dengan minat mendalam pada <strong>Artificial Intelligence</strong> dan <strong>Teknologi Pendidikan</strong>. Memiliki latar belakang kuat dalam administrasi organisasi dan kepemimpinan publik.</p>
+                    <div class="sui-card mt-4">
+                        <div class="d-flex justify-content-between mb-2"><span>GPA Performance</span> <span class="text-primary">3.38 / 4.00</span></div>
+                        <div class="progress bg-dark" style="height: 6px;">
+                            <div class="progress-bar bg-primary" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <img src="https://raw.githubusercontent.com/luizabere/asset2/main/mc.jpeg" class="w-100 rounded-5 shadow-lg" alt="Activity">
                 </div>
             </div>
         </div>
@@ -182,78 +212,40 @@
         <div class="container text-center">
             <h2 class="section-title" data-aos="fade-up">Organizational <span class="text-gradient">Structure</span></h2>
             
-            <div class="row g-3 mb-5 justify-content-center" data-aos="fade-up">
-                <div class="col-6 col-md-2">
-                    <a href="#struct-1" class="text-decoration-none">
-                        <div class="sui-card p-3 nav-pill-custom">
-                            <i class="bi bi-person-badge struct-icon"></i>
-                            <p class="small mb-0 text-white">Sekretaris 1</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-6 col-md-2">
-                    <a href="#struct-2" class="text-decoration-none">
-                        <div class="sui-card p-3 nav-pill-custom">
-                            <i class="bi bi-megaphone struct-icon"></i>
-                            <p class="small mb-0 text-white">Koordinator PR</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-6 col-md-2">
-                    <a href="#struct-3" class="text-decoration-none">
-                        <div class="sui-card p-3 nav-pill-custom">
-                            <i class="bi bi-journal-text struct-icon"></i>
-                            <p class="small mb-0 text-white">Sekretaris 2</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-6 col-md-2">
-                    <a href="#struct-4" class="text-decoration-none">
-                        <div class="sui-card p-3 nav-pill-custom">
-                            <i class="bi bi-people struct-icon"></i>
-                            <p class="small mb-0 text-white">Wakil OSIS</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-6 col-md-2">
-                    <a href="#struct-5" class="text-decoration-none">
-                        <div class="sui-card p-3 nav-pill-custom">
-                            <i class="bi bi-calendar-event struct-icon"></i>
-                            <p class="small mb-0 text-white">Sekretaris Event</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="row g-4 text-start">
-                <div id="struct-1" class="col-12" data-aos="fade-left">
-                    <div class="sui-card">
-                        <h5 class="text-primary fw-bold"><i class="bi bi-patch-check me-2"></i>Sekretaris 1 - BPM FTD (2025)</h5>
-                        <p class="text-muted mb-0">Mengelola sistem administrasi pusat, penyusunan laporan strategis, dan koordinasi antar divisi di Student Representative Board.</p>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4 col-lg-2" data-aos="flip-left" data-aos-delay="100">
+                    <div class="sui-card h-100 p-3 text-center">
+                        <i class="bi bi-shield-check struct-icon"></i>
+                        <h6 class="fw-bold">Sekretaris 1</h6>
+                        <p class="small text-muted mb-0">BPM FTD 2025</p>
                     </div>
                 </div>
-                <div id="struct-2" class="col-12" data-aos="fade-left">
-                    <div class="sui-card">
-                        <h5 class="text-primary fw-bold"><i class="bi bi-patch-check me-2"></i>Koordinator Humas - MAFest 2025</h5>
-                        <p class="text-muted mb-0">Bertanggung jawab atas komunikasi eksternal, manajemen media sosial, dan branding event skala universitas.</p>
+                <div class="col-md-4 col-lg-2" data-aos="flip-left" data-aos-delay="200">
+                    <div class="sui-card h-100 p-3 text-center">
+                        <i class="bi bi-broadcast struct-icon"></i>
+                        <h6 class="fw-bold">Koordinator PR</h6>
+                        <p class="small text-muted mb-0">MAFest 2025</p>
                     </div>
                 </div>
-                <div id="struct-3" class="col-12" data-aos="fade-left">
-                    <div class="sui-card">
-                        <h5 class="text-primary fw-bold"><i class="bi bi-patch-check me-2"></i>Sekretaris 2 - BPM FTD (2024)</h5>
-                        <p class="text-muted mb-0">Menjalankan fungsi kearsipan digital dan membantu Sekretaris 1 dalam dokumentasi rapat serta kegiatan fakultas.</p>
+                <div class="col-md-4 col-lg-2" data-aos="flip-left" data-aos-delay="300">
+                    <div class="sui-card h-100 p-3 text-center">
+                        <i class="bi bi-clipboard-data struct-icon"></i>
+                        <h6 class="fw-bold">Sekretaris 2</h6>
+                        <p class="small text-muted mb-0">BPM FTD 2024</p>
                     </div>
                 </div>
-                <div id="struct-4" class="col-12" data-aos="fade-left">
-                    <div class="sui-card">
-                        <h5 class="text-primary fw-bold"><i class="bi bi-patch-check me-2"></i>Wakil Ketua OSIS</h5>
-                        <p class="text-muted mb-0">Mengoordinasikan berbagai program kerja kesiswaan dan berperan dalam pengambilan keputusan kepemimpinan tingkat sekolah.</p>
+                <div class="col-md-4 col-lg-2" data-aos="flip-left" data-aos-delay="400">
+                    <div class="sui-card h-100 p-3 text-center">
+                        <i class="bi bi-people struct-icon"></i>
+                        <h6 class="fw-bold">Wakil OSIS</h6>
+                        <p class="small text-muted mb-0">Leadership</p>
                     </div>
                 </div>
-                <div id="struct-5" class="col-12" data-aos="fade-left">
-                    <div class="sui-card">
-                        <h5 class="text-primary fw-bold"><i class="bi bi-patch-check me-2"></i>Sekretaris - Ma Chung Festival 2025</h5>
-                        <p class="text-muted mb-0">Menyusun timeline kerja kepanitiaan, manajemen persuratan, dan memastikan alur birokrasi event berjalan lancar.</p>
+                <div class="col-md-4 col-lg-2" data-aos="flip-left" data-aos-delay="500">
+                    <div class="sui-card h-100 p-3 text-center">
+                        <i class="bi bi-calendar3-event struct-icon"></i>
+                        <h6 class="fw-bold">Sekretaris Event</h6>
+                        <p class="small text-muted mb-0">Ma Chung Fest</p>
                     </div>
                 </div>
             </div>
@@ -261,28 +253,34 @@
     </section>
 
     <section id="portfolio" class="py-5">
-        <div class="container text-center">
-            <h2 class="section-title" data-aos="fade-up">Key <span class="text-gradient">Portfolio</span></h2>
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">My <span class="text-gradient">Work</span></h2>
             <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="sui-card text-start h-100">
-                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/Datacom%20V1.0-Course-312410018-ScolastikaLuizaAbukIruBere.png" class="w-100 rounded-4 mb-3" style="height:200px; object-fit:cover;">
-                        <h5>Huawei HCIA-Datacom</h5>
-                        <p class="small text-muted">Kompetensi dalam routing, switching, dan keamanan jaringan.</p>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                    <div class="sui-card p-0 overflow-hidden">
+                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/Datacom%20V1.0-Course-312410018-ScolastikaLuizaAbukIruBere.png" class="w-100" style="height: 220px; object-fit: cover;">
+                        <div class="p-4">
+                            <h5>HCIA Datacom Certification</h5>
+                            <p class="small text-muted">Kompetensi teknis dalam protokol jaringan Huawei.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="sui-card text-start h-100">
-                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/mcf.jpeg" class="w-100 rounded-4 mb-3" style="height:200px; object-fit:cover;">
-                        <h5>Ma Chung Festival</h5>
-                        <p class="small text-muted">Pengalaman manajemen event berskala besar sebagai pimpinan divisi.</p>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="sui-card p-0 overflow-hidden">
+                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/mcf.jpeg" class="w-100" style="height: 220px; object-fit: cover;">
+                        <div class="p-4">
+                            <h5>Management & Leadership</h5>
+                            <p class="small text-muted">Kepemimpinan strategis dalam kepanitiaan festival.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="sui-card text-start h-100">
-                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/mc.jpeg" class="w-100 rounded-4 mb-3" style="height:200px; object-fit:cover;">
-                        <h5>Professional MC</h5>
-                        <p class="small text-muted">Public speaking adaptif untuk formal dan non-formal gathering.</p>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="sui-card p-0 overflow-hidden">
+                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/WhatsApp%20Image%202026-03-03%20at%2008.32.34.jpeg" class="w-100" style="height: 220px; object-fit: cover;">
+                        <div class="p-4">
+                            <h5>Public Speaking</h5>
+                            <p class="small text-muted">Berpengalaman sebagai Master of Ceremony profesional.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -292,23 +290,25 @@
     <footer id="contact">
         <div class="container">
             <div class="row g-5">
-                <div class="col-lg-6">
-                    <h2 class="fw-bold mb-4">Let's Connect.</h2>
-                    <p class="text-muted">Siap berkontribusi pada proyek teknologi dan organisasi Anda.</p>
-                    <div class="d-flex gap-3 mt-4">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="fw-bold mb-4">Mari Berdiskusi.</h2>
+                    <p class="text-muted mb-4">Tersedia untuk kolaborasi proyek IT atau peran strategis organisasi.</p>
+                    <div class="d-flex gap-3">
                         <a href="mailto:luizabere16@gmail.com" class="btn btn-sui">Email Me</a>
-                        <a href="https://wa.me/6281328560870" class="btn btn-outline-light rounded-pill">WhatsApp</a>
+                        <a href="https://wa.me/6281328560870" class="btn btn-outline-light rounded-pill px-4">WhatsApp</a>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="d-flex gap-4 h3">
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="h3 d-flex gap-4">
                         <a href="https://www.linkedin.com/in/scolastika-luiza-abuk-iru-bere-b8729233b" class="text-white"><i class="bi bi-linkedin"></i></a>
                         <a href="https://www.instagram.com/scolastikacc" class="text-white"><i class="bi bi-instagram"></i></a>
                     </div>
+                    <p class="mt-4 text-muted small">Malang, Indonesia | Villa Puncak Tidar</p>
                 </div>
             </div>
-            <div class="text-center mt-5 pt-5 opacity-25 small">
-                &copy; 2026 Scolastika Luiza Abuk Iru Bere. Built with Sui Style.
+            <hr class="mt-5 opacity-10">
+            <div class="text-center pb-3 opacity-50 small">
+                &copy; 2026 Scolastika Luiza Abuk Iru Bere. Built with Sui Ecosystem Style.
             </div>
         </div>
     </footer>
@@ -318,23 +318,31 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
+        // Inisialisasi Animasi Scroll
         AOS.init({ duration: 1000, once: true });
 
+        // Efek Partikel
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "number": { "value": 70, "density": { "enable": true, "value_area": 800 } },
                 "color": { "value": "#4ca2ff" },
                 "shape": { "type": "circle" },
                 "opacity": { "value": 0.2 },
                 "size": { "value": 2, "random": true },
                 "line_linked": { "enable": true, "distance": 150, "color": "#4ca2ff", "opacity": 0.1, "width": 1 },
-                "move": { "enable": true, "speed": 1 }
+                "move": { "enable": true, "speed": 1.2 }
             },
             "interactivity": {
                 "detect_on": "canvas",
                 "events": { "onhover": { "enable": true, "mode": "grab" } }
             },
             "retina_detect": true
+        });
+
+        // Highlight Menu saat di-scroll
+        var scrollSpy = new bootstrap.ScrollSpy(document.body, {
+            target: '#navbarNav',
+            offset: 100
         });
     </script>
 </body>
