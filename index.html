@@ -16,10 +16,9 @@
             --sui-cyan: #33e1cf;
             --glass: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.15);
-            /* Diperbarui ke warna yang lebih terang agar terlihat jelas di atas background gelap */
             --text-visible: #e2e8f0; 
             --text-muted-bright: #cbd5e1;
-            --active-purple: #a855f7;
+            --active-purple: #a855f7; /* Warna untuk tab aktif */
         }
 
         body {
@@ -41,6 +40,7 @@
             background-size: 50px 50px;
         }
 
+        /* NAVBAR REVISIONS */
         .navbar {
             background: rgba(1, 10, 19, 0.9) !important;
             backdrop-filter: blur(20px);
@@ -53,12 +53,19 @@
             font-size: 0.9rem;
             letter-spacing: 0.5px;
             padding: 10px 15px !important;
-            opacity: 0.8;
+            opacity: 0.7;
+            transition: all 0.3s ease;
         }
 
-        .nav-link.active {
+        /* Status Aktif: Warna berubah saat di-scroll atau diklik */
+        .navbar-nav .nav-link.active {
             color: var(--active-purple) !important;
             font-weight: 700;
+            opacity: 1;
+        }
+
+        .nav-link:hover {
+            color: var(--sui-blue) !important;
             opacity: 1;
         }
 
@@ -79,9 +86,8 @@
             z-index: -1;
         }
 
-        /* Animasi Morph & Ukuran Diperbesar */
         .profile-img {
-            width: 350px; /* Ukuran diperbesar */
+            width: 350px;
             height: 350px;
             object-fit: cover;
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
@@ -102,7 +108,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Styling Teks Keterangan agar terlihat jelas */
         .text-muted {
             color: var(--text-muted-bright) !important;
             font-weight: 400;
@@ -123,10 +128,9 @@
             box-shadow: 0 10px 40px rgba(76, 162, 255, 0.2);
         }
 
-        /* About Me Image Style: Siku-siku & Shadow */
         .img-about {
             width: 100%;
-            border-radius: 0px; /* Siku-siku */
+            border-radius: 0px;
             box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.7), 
                         -5px -5px 20px rgba(76, 162, 255, 0.1);
             border: 1px solid var(--glass-border);
@@ -154,12 +158,10 @@
             margin-bottom: 10px;
         }
         
-        .contact-link:hover {
-            color: var(--sui-blue);
-        }
+        .contact-link:hover { color: var(--sui-blue); }
     </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#navbarNav">
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="100">
 
     <div id="particles-js"></div>
 
@@ -297,7 +299,7 @@
                             <a href="https://www.linkedin.com/in/scolastika-luiza-abuk-iru-bere-b8729233b" class="contact-link"><i class="bi bi-linkedin text-primary"></i> LinkedIn Profile</a>
                         </div>
                         <div class="col-md-6">
-                            <a href="https://www.instagram.com/scolastikacc" class="contact-link"><i class="bi bi-instagram text-danger"></i> @scolastikacc</a>
+                            <a href="https://www.instagram.com/scolastikak" class="contact-link"><i class="bi bi-instagram text-danger"></i> @scolastikak</a>
                             <a href="https://machung.ac.id/" class="contact-link" target="_blank"><i class="bi bi-mortarboard-fill text-warning"></i> Ma Chung University</a>
                             <a href="https://lockey-irawan.github.io/" class="contact-link" target="_blank"><i class="bi bi-person-workspace text-info"></i> Project Manager</a>
                         </div>
@@ -320,7 +322,10 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
+        // Inisialisasi AOS (Animasi on Scroll)
         AOS.init({ duration: 1000, once: true });
+
+        // Inisialisasi Particles.js
         particlesJS("particles-js", {
             "particles": {
                 "number": { "value": 70, "density": { "enable": true, "value_area": 800 } },
@@ -336,6 +341,14 @@
                 "events": { "onhover": { "enable": true, "mode": "grab" } }
             },
             "retina_detect": true
+        });
+
+        // JAVASCRIPT TAMBAHAN: Untuk memastikan warna berubah seketika saat diklik
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.nav-link').forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
         });
     </script>
 </body>
