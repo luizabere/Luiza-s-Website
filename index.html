@@ -14,10 +14,12 @@
             --bg-dark: #010a13;
             --sui-blue: #4ca2ff;
             --sui-cyan: #33e1cf;
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --text-muted: #94a3b8;
-            --active-purple: #a855f7; /* Warna ungu seperti di contoh gambar Anda */
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            /* Diperbarui ke warna yang lebih terang agar terlihat jelas di atas background gelap */
+            --text-visible: #e2e8f0; 
+            --text-muted-bright: #cbd5e1;
+            --active-purple: #a855f7;
         }
 
         body {
@@ -28,7 +30,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Particles & Grid Background */
         #particles-js {
             position: fixed;
             width: 100%;
@@ -40,13 +41,11 @@
             background-size: 50px 50px;
         }
 
-        /* Glass Navbar Modern */
         .navbar {
-            background: rgba(1, 10, 19, 0.85) !important;
+            background: rgba(1, 10, 19, 0.9) !important;
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--glass-border);
             padding: 15px 0;
-            transition: 0.4s;
         }
 
         .nav-link {
@@ -54,23 +53,15 @@
             font-size: 0.9rem;
             letter-spacing: 0.5px;
             padding: 10px 15px !important;
-            transition: 0.3s;
             opacity: 0.8;
         }
 
-        .nav-link:hover {
-            color: var(--sui-blue) !important;
-            opacity: 1;
-        }
-
-        /* Style Active Link ala contoh gambar Anda */
         .nav-link.active {
             color: var(--active-purple) !important;
             font-weight: 700;
             opacity: 1;
         }
 
-        /* Hero Section */
         #home {
             min-height: 100vh;
             display: flex;
@@ -80,21 +71,23 @@
 
         .hero-glow {
             position: absolute;
-            width: 300px;
-            height: 300px;
+            width: 400px;
+            height: 400px;
             background: var(--sui-blue);
-            filter: blur(120px);
+            filter: blur(150px);
             opacity: 0.2;
             z-index: -1;
         }
 
+        /* Animasi Morph & Ukuran Diperbesar */
         .profile-img {
-            width: 280px;
-            height: 280px;
+            width: 350px; /* Ukuran diperbesar */
+            height: 350px;
             object-fit: cover;
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            border: 2px solid var(--sui-blue);
+            border: 3px solid var(--sui-blue);
             animation: morph 8s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(76, 162, 255, 0.3);
         }
 
         @keyframes morph {
@@ -109,7 +102,12 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Cards & Components */
+        /* Styling Teks Keterangan agar terlihat jelas */
+        .text-muted {
+            color: var(--text-muted-bright) !important;
+            font-weight: 400;
+        }
+
         .sui-card {
             background: var(--glass);
             border: 1px solid var(--glass-border);
@@ -122,26 +120,43 @@
         .sui-card:hover {
             transform: translateY(-5px);
             border-color: var(--sui-blue);
-            box-shadow: 0 10px 30px rgba(76, 162, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(76, 162, 255, 0.2);
+        }
+
+        /* About Me Image Style: Siku-siku & Shadow */
+        .img-about {
+            width: 100%;
+            border-radius: 0px; /* Siku-siku */
+            box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.7), 
+                        -5px -5px 20px rgba(76, 162, 255, 0.1);
+            border: 1px solid var(--glass-border);
         }
 
         .struct-icon {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             background: linear-gradient(90deg, var(--sui-blue), var(--sui-cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
         }
 
         .section-title { font-weight: 800; font-size: 2.5rem; margin-bottom: 50px; }
 
-        .btn-sui {
-            background: linear-gradient(90deg, var(--sui-blue), var(--sui-cyan));
-            color: white; border: none; border-radius: 100px;
-            padding: 12px 35px; font-weight: 600; transition: 0.3s;
-        }
-
         footer { border-top: 1px solid var(--glass-border); padding: 80px 0 30px; }
+        
+        .contact-link {
+            color: var(--text-visible);
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .contact-link:hover {
+            color: var(--sui-blue);
+        }
     </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbarNav">
@@ -158,7 +173,7 @@
                 <ul class="navbar-nav ms-auto fw-semibold">
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#structure">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
@@ -170,18 +185,14 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7" data-aos="fade-right">
-                    <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3">Ma Chung Informatics Student</span>
+                    <span class="badge rounded-pill bg-primary bg-opacity-20 text-white px-3 py-2 mb-3">Ma Chung Informatics Student</span>
                     <h1 class="display-3 fw-extrabold mb-4">Hallo, Saya Scolastika Luiza <span class="text-gradient">Abuk Iru Bere.</span></h1>
-                    <p class="lead text-muted mb-5">Seorang mahasiswi Teknik Informatika di Universitas Ma Chung yang berfokus pada integrasi AI untuk solusi sosial dan infrastruktur jaringan yang adaptif.</p>
-                    <div class="d-flex gap-3">
-                        <a href="#structure" class="btn btn-sui">Mari Berkenalan</a>
-                        <a href="#contact" class="btn btn-outline-light rounded-pill px-4">Kontak Saya</a>
-                    </div>
+                    <p class="lead text-muted mb-5" style="font-size: 1.2rem;">Seorang mahasiswi Teknik Informatika di Universitas Ma Chung yang berfokus pada integrasi AI untuk solusi sosial dan infrastruktur jaringan yang adaptif.</p>
                 </div>
                 <div class="col-lg-5 text-center mt-5 mt-lg-0" data-aos="zoom-in">
                     <div class="position-relative d-inline-block">
                         <div class="hero-glow"></div>
-                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/WhatsApp%20Image%202026-03-03%20at%2008.32.34.jpeg" alt="Scolastika Luiza" class="profile-img shadow-lg">
+                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/WhatsApp%20Image%202026-03-03%20at%2008.32.34.jpeg" alt="Scolastika Luiza" class="profile-img">
                     </div>
                 </div>
             </div>
@@ -193,59 +204,44 @@
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6" data-aos="fade-up">
                     <h2 class="section-title">About <span class="text-gradient">Me</span></h2>
-                    <p class="text-muted">Saya memiliki minat mendalam pada <strong>Artificial Intelligence</strong> dan <strong>Teknologi Pendidikan</strong>. Memiliki latar belakang kuat dalam administrasi organisasi dan kepemimpinan publik.</p>
+                    <p class="text-muted" style="font-size: 1.1rem;">Saya memiliki minat mendalam pada <strong>Artificial Intelligence</strong> dan <strong>Teknologi Pendidikan</strong>. Memiliki latar belakang kuat dalam administrasi organisasi dan kepemimpinan publik.</p>
                     <div class="sui-card mt-4">
-                        <div class="d-flex justify-content-between mb-2"><span>GPA Performance</span> <span class="text-primary">3.47 / 4.00</span></div>
-                        <div class="progress bg-dark" style="height: 6px;">
-                            <div class="progress-bar bg-primary" style="width: 85%"></div>
+                        <div class="d-flex justify-content-between mb-2"><span class="text-white">GPA Performance</span> <span class="text-primary fw-bold">3.47 / 4.00</span></div>
+                        <div class="progress bg-dark" style="height: 8px;">
+                            <div class="progress-bar bg-primary" style="width: 87%"></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
-                    <img src="https://raw.githubusercontent.com/luizabere/asset2/main/luiza.PNG" class="w-100 rounded-5 shadow-lg" alt="Activity">
+                    <img src="https://raw.githubusercontent.com/luizabere/asset2/main/luiza.PNG" class="img-about" alt="Activity">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="structure" class="py-5">
+    <section id="services" class="py-5">
         <div class="container text-center">
             <h2 class="section-title" data-aos="fade-up">My <span class="text-gradient">Services</span></h2>
-            
             <div class="row g-4 justify-content-center">
-                <div class="col-md-4 col-lg-2" data-aos="flip-left" data-aos-delay="100">
-                    <div class="sui-card h-100 p-3 text-center">
-                        <i class="bi bi-shield-check struct-icon"></i>
-                        <h6 class="fw-bold">Sekretaris 1</h6>
-                        <p class="small text-muted mb-0">BPM FTD 2025</p>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="sui-card h-100">
+                        <i class="bi bi-cpu struct-icon"></i>
+                        <h5 class="fw-bold text-white">Pengembangan IT & Jaringan</h5>
+                        <p class="text-muted">Membangun solusi perangkat lunak dan mengelola infrastruktur jaringan yang efisien.</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-2" data-aos="flip-left" data-aos-delay="200">
-                    <div class="sui-card h-100 p-3 text-center">
-                        <i class="bi bi-broadcast struct-icon"></i>
-                        <h6 class="fw-bold">Koordinator PR</h6>
-                        <p class="small text-muted mb-0">MAFest 2025</p>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="sui-card h-100">
+                        <i class="bi bi-diagram-3 struct-icon"></i>
+                        <h5 class="fw-bold text-white">Manajemen Organisasi & Strategis</h5>
+                        <p class="text-muted">Mengelola struktur organisasi dan merencanakan langkah strategis untuk tujuan jangka panjang.</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-2" data-aos="flip-left" data-aos-delay="300">
-                    <div class="sui-card h-100 p-3 text-center">
-                        <i class="bi bi-clipboard-data struct-icon"></i>
-                        <h6 class="fw-bold">Sekretaris 2</h6>
-                        <p class="small text-muted mb-0">BPM FTD 2024</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-2" data-aos="flip-left" data-aos-delay="400">
-                    <div class="sui-card h-100 p-3 text-center">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="sui-card h-100">
                         <i class="bi bi-people struct-icon"></i>
-                        <h6 class="fw-bold">Wakil OSIS</h6>
-                        <p class="small text-muted mb-0">Leadership</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-2" data-aos="flip-left" data-aos-delay="500">
-                    <div class="sui-card h-100 p-3 text-center">
-                        <i class="bi bi-calendar3-event struct-icon"></i>
-                        <h6 class="fw-bold">Sekretaris Event</h6>
-                        <p class="small text-muted mb-0">Ma Chung Festival</p>
+                        <h5 class="fw-bold text-white">Komunikasi & Kepemimpinan Tim</h5>
+                        <p class="text-muted">Memimpin kolaborasi tim dengan komunikasi efektif untuk hasil yang maksimal.</p>
                     </div>
                 </div>
             </div>
@@ -260,8 +256,8 @@
                     <div class="sui-card p-0 overflow-hidden">
                         <img src="https://raw.githubusercontent.com/luizabere/asset2/main/Datacom%20V1.0-Course-312410018-ScolastikaLuizaAbukIruBere.png" class="w-100" style="height: 220px; object-fit: cover;">
                         <div class="p-4">
-                            <h5>Datacom Certification</h5>
-                            <p class="small text-muted">Kompetensi teknis dalam protokol jaringan Huawei.</p>
+                            <h5 class="text-white">Datacom Certification</h5>
+                            <p class="text-muted">Kompetensi teknis dalam protokol jaringan Huawei.</p>
                         </div>
                     </div>
                 </div>
@@ -269,17 +265,17 @@
                     <div class="sui-card p-0 overflow-hidden">
                         <img src="https://raw.githubusercontent.com/luizabere/asset2/main/mcf.jpeg" class="w-100" style="height: 220px; object-fit: cover;">
                         <div class="p-4">
-                            <h5>Management & Leadership</h5>
-                            <p class="small text-muted">Kepemimpinan strategis dalam kepanitiaan festival.</p>
+                            <h5 class="text-white">Management & Leadership</h5>
+                            <p class="text-muted">Kepemimpinan strategis dalam kepanitiaan festival.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="sui-card p-0 overflow-hidden">
-                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/mc.jpeg"  class="w-100" style="height: 220px; object-fit: cover;">
+                        <img src="https://raw.githubusercontent.com/luizabere/asset2/main/mc.jpeg" class="w-100" style="height: 220px; object-fit: cover;">
                         <div class="p-4">
-                            <h5>Public Speaking</h5>
-                            <p class="small text-muted">Berpengalaman sebagai Master of Ceremony profesional.</p>
+                            <h5 class="text-white">Public Speaking</h5>
+                            <p class="text-muted">Berpengalaman sebagai Master of Ceremony profesional.</p>
                         </div>
                     </div>
                 </div>
@@ -293,17 +289,23 @@
                 <div class="col-lg-6" data-aos="fade-right">
                     <h2 class="fw-bold mb-4">Mari Berdiskusi.</h2>
                     <p class="text-muted mb-4">Tersedia untuk kolaborasi proyek IT atau peran strategis organisasi.</p>
-                    <div class="d-flex gap-3">
-                        <a href="mailto:luizabere16@gmail.com" class="btn btn-sui">Email Me</a>
-                        <a href="https://wa.me/6281328560870" class="btn btn-outline-light rounded-pill px-4">WhatsApp</a>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="mailto:luizabere16@gmail.com" class="contact-link"><i class="bi bi-envelope-at-fill text-primary"></i> luizabere16@gmail.com</a>
+                            <a href="https://wa.me/6281328560870" class="contact-link"><i class="bi bi-whatsapp text-success"></i> WhatsApp Me</a>
+                            <a href="https://www.linkedin.com/in/scolastika-luiza-abuk-iru-bere-b8729233b" class="contact-link"><i class="bi bi-linkedin text-primary"></i> LinkedIn Profile</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="https://www.instagram.com/scolastikacc" class="contact-link"><i class="bi bi-instagram text-danger"></i> @scolastikacc</a>
+                            <a href="https://machung.ac.id/" class="contact-link" target="_blank"><i class="bi bi-mortarboard-fill text-warning"></i> Ma Chung University</a>
+                            <a href="https://lockey-irawan.github.io/" class="contact-link" target="_blank"><i class="bi bi-person-workspace text-info"></i> Project Manager</a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="h3 d-flex gap-4">
-                        <a href="https://www.linkedin.com/in/scolastika-luiza-abuk-iru-bere-b8729233b" class="text-white"><i class="bi bi-linkedin"></i></a>
-                        <a href="https://www.instagram.com/scolastikacc" class="text-white"><i class="bi bi-instagram"></i></a>
-                    </div>
-                    <p class="mt-4 text-muted small">Malang, Indonesia | Villa Puncak Tidar, N.34</p>
+                <div class="col-lg-6 text-lg-end" data-aos="fade-left">
+                    <p class="text-muted small">Malang, Indonesia | Villa Puncak Tidar, N.34</p>
+                    <img src="https://machung.ac.id/wp-content/uploads/2023/04/Logo-Ma-Chung-Fix-01.png" alt="Ma Chung" style="height: 50px; filter: brightness(0) invert(1); opacity: 0.8;">
                 </div>
             </div>
             <hr class="mt-5 opacity-10">
@@ -318,10 +320,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        // Inisialisasi Animasi Scroll
         AOS.init({ duration: 1000, once: true });
-
-        // Efek Partikel
         particlesJS("particles-js", {
             "particles": {
                 "number": { "value": 70, "density": { "enable": true, "value_area": 800 } },
@@ -337,12 +336,6 @@
                 "events": { "onhover": { "enable": true, "mode": "grab" } }
             },
             "retina_detect": true
-        });
-
-        // Highlight Menu saat di-scroll
-        var scrollSpy = new bootstrap.ScrollSpy(document.body, {
-            target: '#navbarNav',
-            offset: 100
         });
     </script>
 </body>
